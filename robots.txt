@@ -1,4 +1,2 @@
 User-agent: *
 Allow: /
-
-Sitemap: https://xaicorr.github.io/prompt-by-avii/sitemap.xml
