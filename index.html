@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>aviixai | AI Image Prompt Library</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <header>
+        <div class="navbar">
+            <div class="logo">@aviixai</div>
+            <input id="search" class="search" type="text" placeholder="Search prompts...">
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <span class="hero-tag">AI Prompt Vault</span>
+        <h1>Prompts Worth Recreating</h1>
+        <p>Explore curated AI imagery, inspect original prompt engineering, and copy prompts with one click.</p>
+    </section>
+
+    <!-- CATEGORIES -->
+    <div class="categories" id="categories"></div>
+
+    <!-- GALLERY -->
+    <main class="gallery" id="gallery"></main>
+    <div class="no-results" id="noResults">No matching prompts found.</div>
+
+    <!-- POPUP MODAL -->
+    <div class="modal" id="modal">
+        <div class="modal-box">
+            <div class="modal-image">
+                <img id="modalImage" src="" alt="">
+            </div>
+            <div class="modal-info">
+                <div>
+                    <button class="close-btn" id="closeModal">&times;</button>
+                    <div class="modal-category" id="modalCategory"></div>
+                    <h2 id="modalTitle"></h2>
+                    <div class="prompt-box" id="modalPrompt"></div>
+                </div>
+                <button class="big-copy" id="modalCopy">Copy Prompt</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOAST NOTIFICATION -->
+    <div class="toast" id="toast">Prompt copied to clipboard!</div>
+
+   <script src="script.js"></script>
+</body>
+
+</html>
