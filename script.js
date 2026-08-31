@@ -1,12 +1,11 @@
-
 // PROPERLY NAMED IMAGE PROMPT DATA
 const images = [
     {
         id: 1,
-        title: "Urban Crowd Motion Model",
-        category: "Street Portrait",
-        image: "images/image-1.png",
-        prompt: `Cinematic color portrait of the person from the reference image, whether girl or boy, styled as a professional fashion model with a serious, confident expression and direct front-facing gaze toward the camera. Keep their identity and facial features recognizable. Wearing a clean, premium off-white linen shirt, standing completely still in the exact center of a moving crowd. The subject is perfectly front-facing with no head tilt or side angle, tack-sharp with crisp facial details, while the surrounding people move rapidly with natural motion blur. Vibrant but cinematic color grading, realistic skin tones, soft natural lighting, dramatic urban atmosphere, shallow depth of field, subtle film grain, high-end editorial photography, dynamic contrast, authentic street photography aesthetic. Vertical 4:5 aspect ratio.`
+        title: "Midnight Solitude",
+        category: "Cinematic",
+        image: "images/image-5.png",
+        prompt: `Ultra-realistic cinematic nighttime portrait of an adult woman in a dimly lit luxury hotel bedroom, positioned beside a large floor-to-ceiling window overlooking a city at night. She is seated/standing close to the camera with her upper body slightly turned, one shoulder angled toward the camera, head gently tilted to the side, chin slightly raised, eyes softly closed or looking downward, lips slightly parted, with a calm, dreamy, subtly melancholic expression. Her long, naturally tousled dark hair falls heavily around her face and over one shoulder, with loose strands partially covering her eyes and cheeks. She wears a delicate black lace camisole with thin spaghetti straps and a loose black satin robe casually slipping down one shoulder. Warm light from a large bedside lamp on the left softly illuminates her face, shoulder, and skin, while cool blue-black city lights glow through the window behind her. Deep shadows, warm-and-cool contrast, blurred city bokeh, intimate late-night atmosphere, natural skin texture, realistic hair strands, soft film grain, subtle halation, muted dark tones, shallow depth of field, candid editorial photography, 50mm lens, f/1.8, photorealistic.`
     },
     {
         id: 2,
@@ -41,13 +40,13 @@ The man is positioned on the right side of the vehicle, casually leaning/standin
 
 Environment: rainy mountain location, wet reflective asphalt, misty mountains in the background, subtle greenery, overcast grey sky, light rain falling, realistic water droplets on the G-Wagon.`
     },
-    // {
-    //     id: 5,
-    //     title: "Monochrome Street Fashion",
-    //     category: "Fashion Portrait",
-    //     image: "images/image-5.png",
-    //     prompt: `High-fashion street editorial portrait of a model wearing a minimalist black oversized trench coat, dramatic directional side lighting, muted dark tones, high contrast shadows, shallow depth of field, captured on a 35mm lens.`
-    // },
+    {
+        id: 5,
+        title: "Urban Crowd Motion Model",
+        category: "Fashion Portrait",
+        image: "images/image-1.png",
+        prompt: `Cinematic color portrait of the person from the reference image, whether girl or boy, styled as a professional fashion model with a serious, confident expression and direct front-facing gaze toward the camera. Keep their identity and facial features recognizable. Wearing a clean, premium off-white linen shirt, standing completely still in the exact center of a moving crowd. The subject is perfectly front-facing with no head tilt or side angle, tack-sharp with crisp facial details, while the surrounding people move rapidly with natural motion blur. Vibrant but cinematic color grading, realistic skin tones, soft natural lighting, dramatic urban atmosphere, shallow depth of field, subtle film grain, high-end editorial photography, dynamic contrast, authentic street photography aesthetic. Vertical 4:5 aspect ratio.`
+    }
     // {
     //     id: 6,
     //     title: "Neon Cyberpunk Alley",
