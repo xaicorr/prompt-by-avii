@@ -4,13 +4,15 @@ const images = [
         id: "moody-outdoor-portrait",
         title: "Moody Graphic Tee Portrait",
         category: "Cinematic",
-        image: "images/image-7.png",
+        thumb: "images/thumbs/image-7.webp", // Lightweight thumbnail for gallery (~25KB)
+        image: "images/image-7.png",        // Full high-res PNG for modal popup
         prompt: `Cinematic, moody outdoor portrait of a stylish young person with naturally curly dark hair, wearing rectangular black sunglasses and a small stud earring, looking slightly to the side rather than at the camera, with a calm, confident expression. They have neatly groomed facial hair or natural soft features, subtle neck tattoos with floral and numeric designs, and are dressed in an oversized, washed-black graphic T-shirt featuring distressed skull and red flame-like elements. The shot is a close-up/medium close-up from the chest up, captured from a slight angle, with the head and shoulders turned subtly to the side. Soft natural lighting with gentle contrast and cinematic`
     },
     {
         id: "triptych-window-silhouette",
         title: "Triptych Window Silhouette",
         category: "Cinematic",
+        thumb: "images/thumbs/image-6.webp",
         image: "images/image-6.png",
         prompt: `Create a photorealistic 3:4 vertical triptych collage featuring the SAME PERSON from the attached reference image, appearing consistently across three equally sized frames stacked vertically. Preserve their recognizable hairstyle, body proportions, overall appearance and natural characteristics from the reference, while keeping the presentation completely gender-neutral.
 FRAME 1 — WINDOW LIGHT
@@ -34,6 +36,7 @@ No text, watermark, logos, excessive retouching, plastic-looking skin, distorted
         id: "midnight-solitude",
         title: "Midnight Solitude",
         category: "Cinematic",
+        thumb: "images/thumbs/image-5.webp",
         image: "images/image-5.png",
         prompt: `Ultra-realistic cinematic nighttime portrait of an adult woman in a dimly lit luxury hotel bedroom, positioned beside a large floor-to-ceiling window overlooking a city at night. She is seated/standing close to the camera with her upper body slightly turned, one shoulder angled toward the camera, head gently tilted to the side, chin slightly raised, eyes softly closed or looking downward, lips slightly parted, with a calm, dreamy, subtly melancholic expression. Her long, naturally tousled dark hair falls heavily around her face and over one shoulder, with loose strands partially covering her eyes and cheeks. She wears a delicate black lace camisole with thin spaghetti straps and a loose black satin robe casually slipping down one shoulder. Warm light from a large bedside lamp on the left softly illuminates her face, shoulder, and skin, while cool blue-black city lights glow through the window behind her. Deep shadows, warm-and-cool contrast, blurred city bokeh, intimate late-night atmosphere, natural skin texture, realistic hair strands, soft film grain, subtle halation, muted dark tones, shallow depth of field, candid editorial photography, 50mm lens, f/1.8, photorealistic.`
     },
@@ -41,6 +44,7 @@ No text, watermark, logos, excessive retouching, plastic-looking skin, distorted
         id: "crimson-studio-editorial",
         title: "Crimson Studio Editorial",
         category: "Fashion Portrait",
+        thumb: "images/thumbs/image-2.webp",
         image: "images/image-2.png",
         prompt: `A cinematic close-up portrait of a stylish young man with medium-length messy wavy black hair, light stubble with a neatly trimmed beard and mustache, wearing slim rectangular black sunglasses and a small silver hoop earring in his left ear. He has a warm confident smile showing white teeth. He is dressed in a black ribbed knit crew-neck sweater. The background is a deep crimson red studio backdrop with a dramatic red rim light illuminating the right side of his hair and shoulder, while soft warm key lighting highlights the front of his face. High-end fashion editorial photography, luxury magazine cover aesthetic, ultra-realistic skin texture, sharp focus, shallow depth of field, professional studio lighting, rich contrast, moody atmosphere, 85mm portrait lens, f/1.8, photorealistic, 8K, premium color grading, minimal composition.`
     },
@@ -48,6 +52,7 @@ No text, watermark, logos, excessive retouching, plastic-looking skin, distorted
         id: "molten-silver-waves",
         title: "Molten Silver Waves",
         category: "Surreal 3D",
+        thumb: "images/thumbs/image-3.webp",
         image: "images/image-3.png",
         prompt: `Large, flowing liquid chrome/silver metal formations with an ultra-polished mirror finish. The material looks like molten reflective silver, thick and fluid, frozen in dramatic motion. Create smooth, organic tendrils, ribbons, tubes, waves, loops, curls, and elongated streams that twist and bend naturally.
 
@@ -61,6 +66,7 @@ Key visual: hyper-realistic molten chrome / liquid silver, mirror-polished, seam
         id: "rainy-mountain-gwagon",
         title: "Rainy Mountain G-Wagon",
         category: "Automotive",
+        thumb: "images/thumbs/image-4.webp",
         image: "images/image-4.png",
         prompt: `Create a photorealistic vertical 9:16 luxury lifestyle photograph matching the composition and mood of the reference image.
 
@@ -74,6 +80,7 @@ Environment: rainy mountain location, wet reflective asphalt, misty mountains in
         id: "urban-crowd-motion-model",
         title: "Urban Crowd Motion Model",
         category: "Fashion Portrait",
+        thumb: "images/thumbs/image-1.webp",
         image: "images/image-1.png",
         prompt: `Cinematic color portrait of the person from the reference image, whether girl or boy, styled as a professional fashion model with a serious, confident expression and direct front-facing gaze toward the camera. Keep their identity and facial features recognizable. Wearing a clean, premium off-white linen shirt, standing completely still in the exact center of a moving crowd. The subject is perfectly front-facing with no head tilt or side angle, tack-sharp with crisp facial details, while the surrounding people move rapidly with natural motion blur. Vibrant but cinematic color grading, realistic skin tones, soft natural lighting, dramatic urban atmosphere, shallow depth of field, subtle film grain, high-end editorial photography, dynamic contrast, authentic street photography aesthetic. Vertical 4:5 aspect ratio.`
     }
@@ -128,20 +135,20 @@ function displayImages() {
         const card = document.createElement("article");
         card.className = "card";
         card.innerHTML = `
-                    <div class="image-container">
-                        <img src="${item.image}" alt="${item.title}" loading="lazy">
-                    </div>
-                    <div class="card-info">
-                        <div>
-                            <div class="card-category">${item.category}</div>
-                            <div class="card-title">${item.title}</div>
-                        </div>
-                        <div class="buttons">
-                            <button class="btn" onclick="openImage('${item.id}')">View</button>
-                            <button class="btn copy-btn" onclick="copyPrompt('${item.id}')">Copy</button>
-                        </div>
-                    </div>
-                `;
+            <div class="image-container">
+                <img src="${item.thumb}" alt="${item.title}" loading="lazy" decoding="async" width="280" height="350">
+            </div>
+            <div class="card-info">
+                <div>
+                    <div class="card-category">${item.category}</div>
+                    <div class="card-title">${item.title}</div>
+                </div>
+                <div class="buttons">
+                    <button class="btn" onclick="openImage('${item.id}')">View</button>
+                    <button class="btn copy-btn" onclick="copyPrompt('${item.id}')">Copy</button>
+                </div>
+            </div>
+        `;
         gallery.appendChild(card);
     });
 }
