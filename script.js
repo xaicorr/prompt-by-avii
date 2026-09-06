@@ -1,7 +1,14 @@
 // PROPERLY NAMED IMAGE PROMPT DATA
 const images = [
     {
-        id: 1,
+        id: "moody-outdoor-portrait",
+        title: "Moody Graphic Tee Portrait",
+        category: "Cinematic",
+        image: "images/image-7.png",
+        prompt: `Cinematic, moody outdoor portrait of a stylish young person with naturally curly dark hair, wearing rectangular black sunglasses and a small stud earring, looking slightly to the side rather than at the camera, with a calm, confident expression. They have neatly groomed facial hair or natural soft features, subtle neck tattoos with floral and numeric designs, and are dressed in an oversized, washed-black graphic T-shirt featuring distressed skull and red flame-like elements. The shot is a close-up/medium close-up from the chest up, captured from a slight angle, with the head and shoulders turned subtly to the side. Soft natural lighting with gentle contrast and cinematic`
+    },
+    {
+        id: "triptych-window-silhouette",
         title: "Triptych Window Silhouette",
         category: "Cinematic",
         image: "images/image-6.png",
@@ -24,21 +31,21 @@ The face must remain hidden in ALL THREE frames. Do not show recognizable facial
 No text, watermark, logos, excessive retouching, plastic-looking skin, distorted anatomy, unnatural hands or artificial AI-looking details.`
     },
     {
-        id: 2,
+        id: "midnight-solitude",
         title: "Midnight Solitude",
         category: "Cinematic",
         image: "images/image-5.png",
         prompt: `Ultra-realistic cinematic nighttime portrait of an adult woman in a dimly lit luxury hotel bedroom, positioned beside a large floor-to-ceiling window overlooking a city at night. She is seated/standing close to the camera with her upper body slightly turned, one shoulder angled toward the camera, head gently tilted to the side, chin slightly raised, eyes softly closed or looking downward, lips slightly parted, with a calm, dreamy, subtly melancholic expression. Her long, naturally tousled dark hair falls heavily around her face and over one shoulder, with loose strands partially covering her eyes and cheeks. She wears a delicate black lace camisole with thin spaghetti straps and a loose black satin robe casually slipping down one shoulder. Warm light from a large bedside lamp on the left softly illuminates her face, shoulder, and skin, while cool blue-black city lights glow through the window behind her. Deep shadows, warm-and-cool contrast, blurred city bokeh, intimate late-night atmosphere, natural skin texture, realistic hair strands, soft film grain, subtle halation, muted dark tones, shallow depth of field, candid editorial photography, 50mm lens, f/1.8, photorealistic.`
     },
     {
-        id: 3,
+        id: "crimson-studio-editorial",
         title: "Crimson Studio Editorial",
         category: "Fashion Portrait",
         image: "images/image-2.png",
         prompt: `A cinematic close-up portrait of a stylish young man with medium-length messy wavy black hair, light stubble with a neatly trimmed beard and mustache, wearing slim rectangular black sunglasses and a small silver hoop earring in his left ear. He has a warm confident smile showing white teeth. He is dressed in a black ribbed knit crew-neck sweater. The background is a deep crimson red studio backdrop with a dramatic red rim light illuminating the right side of his hair and shoulder, while soft warm key lighting highlights the front of his face. High-end fashion editorial photography, luxury magazine cover aesthetic, ultra-realistic skin texture, sharp focus, shallow depth of field, professional studio lighting, rich contrast, moody atmosphere, 85mm portrait lens, f/1.8, photorealistic, 8K, premium color grading, minimal composition.`
     },
     {
-        id: 4,
+        id: "molten-silver-waves",
         title: "Molten Silver Waves",
         category: "Surreal 3D",
         image: "images/image-3.png",
@@ -51,7 +58,7 @@ The formations should vary in thickness, with some massive flowing structures an
 Key visual: hyper-realistic molten chrome / liquid silver, mirror-polished, seamless flowing shapes, sculptural but fluid, surreal yet physically believable, cinematic reflections, extremely detailed metallic surface.`
     },
     {
-        id: 5,
+        id: "rainy-mountain-gwagon",
         title: "Rainy Mountain G-Wagon",
         category: "Automotive",
         image: "images/image-4.png",
@@ -64,7 +71,7 @@ The man is positioned on the right side of the vehicle, casually leaning/standin
 Environment: rainy mountain location, wet reflective asphalt, misty mountains in the background, subtle greenery, overcast grey sky, light rain falling, realistic water droplets on the G-Wagon.`
     },
     {
-        id: 6,
+        id: "urban-crowd-motion-model",
         title: "Urban Crowd Motion Model",
         category: "Fashion Portrait",
         image: "images/image-1.png",
@@ -130,8 +137,8 @@ function displayImages() {
                             <div class="card-title">${item.title}</div>
                         </div>
                         <div class="buttons">
-                            <button class="btn" onclick="openImage(${item.id})">View</button>
-                            <button class="btn copy-btn" onclick="copyPrompt(${item.id})">Copy</button>
+                            <button class="btn" onclick="openImage('${item.id}')">View</button>
+                            <button class="btn copy-btn" onclick="copyPrompt('${item.id}')">Copy</button>
                         </div>
                     </div>
                 `;
@@ -143,19 +150,23 @@ search.addEventListener("input", displayImages);
 
 function copyPrompt(id) {
     const item = images.find(img => img.id === id);
-    navigator.clipboard.writeText(item.prompt).then(() => {
-        showToast();
-    });
+    if (item) {
+        navigator.clipboard.writeText(item.prompt).then(() => {
+            showToast();
+        });
+    }
 }
 
 function openImage(id) {
     const item = images.find(img => img.id === id);
-    document.getElementById("modalImage").src = item.image;
-    document.getElementById("modalTitle").textContent = item.title;
-    document.getElementById("modalCategory").textContent = item.category;
-    document.getElementById("modalPrompt").textContent = item.prompt;
-    modal.dataset.currentId = id;
-    modal.classList.add("show");
+    if (item) {
+        document.getElementById("modalImage").src = item.image;
+        document.getElementById("modalTitle").textContent = item.title;
+        document.getElementById("modalCategory").textContent = item.category;
+        document.getElementById("modalPrompt").textContent = item.prompt;
+        modal.dataset.currentId = id;
+        modal.classList.add("show");
+    }
 }
 
 document.getElementById("closeModal").onclick = () => modal.classList.remove("show");
@@ -163,7 +174,7 @@ modal.addEventListener("click", e => { if (e.target === modal) modal.classList.r
 document.addEventListener("keydown", e => { if (e.key === "Escape") modal.classList.remove("show"); });
 
 document.getElementById("modalCopy").onclick = () => {
-    const id = Number(modal.dataset.currentId);
+    const id = modal.dataset.currentId;
     copyPrompt(id);
 };
 
