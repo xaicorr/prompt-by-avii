@@ -1,6 +1,16 @@
 // PROPERLY NAMED IMAGE PROMPT DATA
 const images = [
     {
+        id: "munna-bhaiya",
+        title: "Munna Bhaiya",
+        category: "Cinematic",
+        thumb: "images/thumbs/image-8.webp",
+        image: "images/image-8.png",
+        prompt: `Photorealistic cinematic 3:4 portrait of the person from my reference image, keeping their face, identity, hairstyle, skin tone, and facial features consistent. Recreate the exact confident pose: standing upright with both hands resting naturally on the hips, shoulders relaxed, looking slightly upward/forward. Dress the person in the same dark brown long-sleeve kurta-style shirt with black inner collar/details. Same accessories: dark sunglasses, multiple black/brown bracelets and bands on the left wrist, and a large silver wristwatch on the right wrist.
+In the background, add an old rugged black Mahindra Thar-style off-road SUV with the roof open, chunky wide off-road tires, and distinctive yellow fog lamps, parked naturally behind the person. Keep the vehicle slightly out of focus so the person remains the main subject. Recreate the same outdoor setting with softly blurred people and pale architectural surroundings, shallow depth of field, cinematic natural lighting, muted warm tones, realistic skin texture, subtle film grain, slightly soft dreamy focus.
+Frame from head to below the waist with the full body width visible. Both hands, wrists, bracelets, and watch must be completely inside the frame—NO cropped hands or arms. Natural proportions, realistic photography, cinematic composition, high detail, no text, no watermark.`
+    },
+    {
         id: "moody-outdoor-portrait",
         title: "Moody Graphic Tee Portrait",
         category: "Cinematic",
