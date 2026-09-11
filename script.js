@@ -1,6 +1,23 @@
 // PROPERLY NAMED IMAGE PROMPT DATA
 const images = [
     {
+        id: "90s-yamaha-street-style",
+        title: "90's Indian Street Style",
+        category: "Cinematic",
+        thumb: "images/thumbs/image-9.webp",
+        image: "images/image-9.png",
+        prompt: `Use the uploaded photo as the primary character reference. Keep the man’s exact facial identity, facial structure, skin tone, hairstyle, body proportions, and recognizable features unchanged. Transform the scene into an authentic 1990s Indian street-style photograph.
+The man is sitting casually and confidently on a Yamaha RX-Z motorcycle, with a relaxed, effortlessly cool 90s pose. He is wearing authentic 1990s fashion — oversized vintage shirt with slightly loose-fit jeans, classic leather belt, retro sneakers, and 90s-style dark sunglasses. His clothing should look naturally worn and period-accurate, not modern or futuristic.
+The Yamaha RX-Z should have an authentic late-90s appearance, with realistic proportions and period-correct details. The man is posing like a stylish young man from a 1990s Indian movie or vintage magazine photoshoot.
+Photography style: authentic 1990s analog film photography, slightly underexposed, warm natural sunlight, harsh directional light, subtle flash feel, deep shadows, muted vintage colors, realistic skin tones, soft highlights, noticeable 35mm film grain, dust, tiny scratches, slight chromatic aberration, halation, mild motion blur, imperfect exposure, low dynamic range and nostalgic film texture.
+Make it look like an old low-quality photograph from the 1990s that has been professionally restored/scanned in high resolution — vintage image character but extremely detailed and sharp where appropriate. Avoid the overly clean, glossy, modern AI-generated look.
+Composition: cinematic full-body/three-quarter shot, motorcycle clearly visible, slightly low camera angle, confident relaxed expression, natural body posture, authentic Indian 90s street environment, subtle background blur, atmospheric depth.
+Overall mood: effortlessly cool, nostalgic, rebellious 90s youth aesthetic, like a rare photograph discovered from a 1990s film magazine.
+Important: preserve the original person’s identity exactly. Do not change his face or make him look like a different person. Keep the motorcycle and clothing realistic and period-accurate.
+
+Negative prompt: modern clothing, modern motorcycle design, futuristic, cyberpunk, overly polished, CGI, plastic skin, AI face, altered facial identity, different person, excessive HDR, oversaturated colors, ultra-clean digital photography, modern sunglasses, modern sneakers, contemporary fashion, distorted hands, extra fingers, malformed motorcycle, incorrect motorcycle proportions, unrealistic pose, excessive sharpening, beauty filter`
+    },
+    {
         id: "munna-bhaiya",
         title: "Munna Bhaiya",
         category: "Cinematic",
