@@ -1,11 +1,26 @@
 // PROPERLY NAMED IMAGE PROMPT DATA
 const images = [
     {
+        id: "accidental-candid-selfie",
+        title: "Accidental Smartphone Selfie",
+        category: "Cinematic",
+        image: "images/image-10.webp",
+        prompt: `Create an ultra-realistic accidental smartphone selfie of the uploaded person. The photo should look completely unplanned, as if the phone camera was accidentally triggered while the person was moving. Capture the subject mid-motion with noticeable but realistic natural motion blur across the face, hair, and parts of the body, making facial details slightly difficult to identify.
+
+Use imperfect framing, subtle camera shake, uneven composition, and realistic motion streaks to recreate the feel of a genuine spontaneous snapshot. One arm should be partially extended naturally, as if the person is holding the phone, without looking deliberately posed. The subject should not make eye contact with the camera and should appear unaware of the exact moment being captured.
+
+Keep the lighting natural and believable, with authentic smartphone exposure and color rendering. Add subtle sensor grain, slight softness, shallow focus, and minor imperfections typical of a real phone photograph.
+Avoid studio lighting, beauty retouching, excessive sharpness, artificial skin, or a polished editorial appearance.
+
+The final image should feel raw, candid, spontaneous, and imperfect — like a real accidental photo rather than an intentionally created portrait.
+
+Vertical 4:5 aspect ratio.`
+    },
+    {
         id: "90s-yamaha-street-style",
         title: "90's Indian Street Style",
         category: "Cinematic",
-        thumb: "images/thumbs/image-9.webp",
-        image: "images/image-9.png",
+        image: "images/image-9.webp",
         prompt: `Use the uploaded photo as the primary character reference. Keep the man’s exact facial identity, facial structure, skin tone, hairstyle, body proportions, and recognizable features unchanged. Transform the scene into an authentic 1990s Indian street-style photograph.
 The man is sitting casually and confidently on a Yamaha RX-Z motorcycle, with a relaxed, effortlessly cool 90s pose. He is wearing authentic 1990s fashion — oversized vintage shirt with slightly loose-fit jeans, classic leather belt, retro sneakers, and 90s-style dark sunglasses. His clothing should look naturally worn and period-accurate, not modern or futuristic.
 The Yamaha RX-Z should have an authentic late-90s appearance, with realistic proportions and period-correct details. The man is posing like a stylish young man from a 1990s Indian movie or vintage magazine photoshoot.
@@ -21,8 +36,7 @@ Negative prompt: modern clothing, modern motorcycle design, futuristic, cyberpun
         id: "munna-bhaiya",
         title: "Munna Bhaiya",
         category: "Cinematic",
-        thumb: "images/thumbs/image-8.webp",
-        image: "images/image-8.png",
+        image: "images/image-8.webp",
         prompt: `Photorealistic cinematic 3:4 portrait of the person from my reference image, keeping their face, identity, hairstyle, skin tone, and facial features consistent. Recreate the exact confident pose: standing upright with both hands resting naturally on the hips, shoulders relaxed, looking slightly upward/forward. Dress the person in the same dark brown long-sleeve kurta-style shirt with black inner collar/details. Same accessories: dark sunglasses, multiple black/brown bracelets and bands on the left wrist, and a large silver wristwatch on the right wrist.
 In the background, add an old rugged black Mahindra Thar-style off-road SUV with the roof open, chunky wide off-road tires, and distinctive yellow fog lamps, parked naturally behind the person. Keep the vehicle slightly out of focus so the person remains the main subject. Recreate the same outdoor setting with softly blurred people and pale architectural surroundings, shallow depth of field, cinematic natural lighting, muted warm tones, realistic skin texture, subtle film grain, slightly soft dreamy focus.
 Frame from head to below the waist with the full body width visible. Both hands, wrists, bracelets, and watch must be completely inside the frame—NO cropped hands or arms. Natural proportions, realistic photography, cinematic composition, high detail, no text, no watermark.`
@@ -31,16 +45,14 @@ Frame from head to below the waist with the full body width visible. Both hands,
         id: "moody-outdoor-portrait",
         title: "Moody Graphic Tee Portrait",
         category: "Cinematic",
-        thumb: "images/thumbs/image-7.webp", // Lightweight thumbnail for gallery (~25KB)
-        image: "images/image-7.png",        // Full high-res PNG for modal popup
+        image: "images/image-7.webp",
         prompt: `Cinematic, moody outdoor portrait of a stylish young person with naturally curly dark hair, wearing rectangular black sunglasses and a small stud earring, looking slightly to the side rather than at the camera, with a calm, confident expression. They have neatly groomed facial hair or natural soft features, subtle neck tattoos with floral and numeric designs, and are dressed in an oversized, washed-black graphic T-shirt featuring distressed skull and red flame-like elements. The shot is a close-up/medium close-up from the chest up, captured from a slight angle, with the head and shoulders turned subtly to the side. Soft natural lighting with gentle contrast and cinematic`
     },
     {
         id: "triptych-window-silhouette",
         title: "Triptych Window Silhouette",
         category: "Cinematic",
-        thumb: "images/thumbs/image-6.webp",
-        image: "images/image-6.png",
+        image: "images/image-6.webp",
         prompt: `Create a photorealistic 3:4 vertical triptych collage featuring the SAME PERSON from the attached reference image, appearing consistently across three equally sized frames stacked vertically. Preserve their recognizable hairstyle, body proportions, overall appearance and natural characteristics from the reference, while keeping the presentation completely gender-neutral.
 FRAME 1 — WINDOW LIGHT
 Place the person beside a bedroom window, body turned slightly away from the camera. One arm is naturally raised, with the forearm covering the eyes and most of the upper face. Keep the head slightly lowered and the posture relaxed, creating a subtle mysterious mood.
@@ -63,24 +75,21 @@ No text, watermark, logos, excessive retouching, plastic-looking skin, distorted
         id: "midnight-solitude",
         title: "Midnight Solitude",
         category: "Cinematic",
-        thumb: "images/thumbs/image-5.webp",
-        image: "images/image-5.png",
+        image: "images/image-5.webp",
         prompt: `Ultra-realistic cinematic nighttime portrait of an adult woman in a dimly lit luxury hotel bedroom, positioned beside a large floor-to-ceiling window overlooking a city at night. She is seated/standing close to the camera with her upper body slightly turned, one shoulder angled toward the camera, head gently tilted to the side, chin slightly raised, eyes softly closed or looking downward, lips slightly parted, with a calm, dreamy, subtly melancholic expression. Her long, naturally tousled dark hair falls heavily around her face and over one shoulder, with loose strands partially covering her eyes and cheeks. She wears a delicate black lace camisole with thin spaghetti straps and a loose black satin robe casually slipping down one shoulder. Warm light from a large bedside lamp on the left softly illuminates her face, shoulder, and skin, while cool blue-black city lights glow through the window behind her. Deep shadows, warm-and-cool contrast, blurred city bokeh, intimate late-night atmosphere, natural skin texture, realistic hair strands, soft film grain, subtle halation, muted dark tones, shallow depth of field, candid editorial photography, 50mm lens, f/1.8, photorealistic.`
     },
     {
         id: "crimson-studio-editorial",
         title: "Crimson Studio Editorial",
         category: "Fashion Portrait",
-        thumb: "images/thumbs/image-2.webp",
-        image: "images/image-2.png",
+        image: "images/image-2.webp",
         prompt: `A cinematic close-up portrait of a stylish young man with medium-length messy wavy black hair, light stubble with a neatly trimmed beard and mustache, wearing slim rectangular black sunglasses and a small silver hoop earring in his left ear. He has a warm confident smile showing white teeth. He is dressed in a black ribbed knit crew-neck sweater. The background is a deep crimson red studio backdrop with a dramatic red rim light illuminating the right side of his hair and shoulder, while soft warm key lighting highlights the front of his face. High-end fashion editorial photography, luxury magazine cover aesthetic, ultra-realistic skin texture, sharp focus, shallow depth of field, professional studio lighting, rich contrast, moody atmosphere, 85mm portrait lens, f/1.8, photorealistic, 8K, premium color grading, minimal composition.`
     },
     {
         id: "molten-silver-waves",
         title: "Molten Silver Waves",
         category: "Surreal 3D",
-        thumb: "images/thumbs/image-3.webp",
-        image: "images/image-3.png",
+        image: "images/image-3.webp",
         prompt: `Large, flowing liquid chrome/silver metal formations with an ultra-polished mirror finish. The material looks like molten reflective silver, thick and fluid, frozen in dramatic motion. Create smooth, organic tendrils, ribbons, tubes, waves, loops, curls, and elongated streams that twist and bend naturally.
 
 The silver liquid should have a perfectly smooth metallic surface, extremely high reflectivity, realistic mirror-like highlights, strong environmental reflections, and subtle distorted reflections across its curved surface. It should feel like heavy liquid metal, not plastic, glass, chrome pipes, or solid sculptures.
@@ -93,8 +102,7 @@ Key visual: hyper-realistic molten chrome / liquid silver, mirror-polished, seam
         id: "rainy-mountain-gwagon",
         title: "Rainy Mountain G-Wagon",
         category: "Automotive",
-        thumb: "images/thumbs/image-4.webp",
-        image: "images/image-4.png",
+        image: "images/image-4.webp",
         prompt: `Create a photorealistic vertical 9:16 luxury lifestyle photograph matching the composition and mood of the reference image.
 
 A young stylish man is standing beside a black Mercedes-Benz G-Class (G-Wagon) on a wet road during a gloomy, rainy mountain setting. Replace the Defender completely with a modern black G-Wagon, keeping the vehicle large and prominent on the left side of the frame. The G-Wagon should have its iconic boxy silhouette, upright windshield, squared body, distinctive round headlights, vertical grille, Mercedes-Benz emblem, realistic LED lighting, glossy black paint, and accurate premium proportions.
@@ -107,8 +115,7 @@ Environment: rainy mountain location, wet reflective asphalt, misty mountains in
         id: "urban-crowd-motion-model",
         title: "Urban Crowd Motion Model",
         category: "Fashion Portrait",
-        thumb: "images/thumbs/image-1.webp",
-        image: "images/image-1.png",
+        image: "images/image-1.webp",
         prompt: `Cinematic color portrait of the person from the reference image, whether girl or boy, styled as a professional fashion model with a serious, confident expression and direct front-facing gaze toward the camera. Keep their identity and facial features recognizable. Wearing a clean, premium off-white linen shirt, standing completely still in the exact center of a moving crowd. The subject is perfectly front-facing with no head tilt or side angle, tack-sharp with crisp facial details, while the surrounding people move rapidly with natural motion blur. Vibrant but cinematic color grading, realistic skin tones, soft natural lighting, dramatic urban atmosphere, shallow depth of field, subtle film grain, high-end editorial photography, dynamic contrast, authentic street photography aesthetic. Vertical 4:5 aspect ratio.`
     }
 ];
@@ -163,7 +170,7 @@ function displayImages() {
         card.className = "card";
         card.innerHTML = `
             <div class="image-container">
-                <img src="${item.thumb}" alt="${item.title}" loading="lazy" decoding="async" width="280" height="350">
+                <img src="${item.image}" alt="${item.title}" loading="lazy" decoding="async">
             </div>
             <div class="card-info">
                 <div>
