@@ -1,6 +1,13 @@
 // PROPERLY NAMED IMAGE PROMPT DATA
 const images = [
     {
+        id: "bw-editorial-portrait",
+        title: "B&W High-Contrast Editorial",
+        category: "Fashion Portrait",
+        image: "images/image-11.webp",
+        prompt: `Photorealistic black-and-white editorial portrait of the person from my reference image, keeping their face, identity, hairstyle, and features consistent. Wearing an oversized black blazer over a black turtleneck, looking slightly upward to the side, soft studio lighting, minimalist white background, strong soft-profile shadow behind them, cinematic high-contrast photography.`
+    },
+    {
         id: "accidental-candid-selfie",
         title: "Accidental Smartphone Selfie",
         category: "Cinematic",
