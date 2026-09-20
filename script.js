@@ -1,6 +1,19 @@
 // PROPERLY NAMED IMAGE PROMPT DATA
 const images = [
     {
+        id: "royal-enfield-sunset-tour",
+        title: "Royal Enfield Mountain Sunset",
+        category: "Cinematic",
+        image: "images/image-12.webp",
+        prompt: `Create a photorealistic cinematic travel photograph inspired by the reference scene. Place me standing casually beside a Royal Enfield Classic motorcycle on a winding mountain road in a lush green hill-station landscape. The motorcycle should be positioned naturally beside me, fully visible, with realistic Royal Enfield Classic proportions, details, chrome components, wheels, engine, fuel tank and exhaust.
+Replace my current outfit with a premium black leather jacket, worn naturally and slightly fitted, over a simple dark shirt, paired with dark straight-fit jeans and clean casual boots/shoes. Give me a relaxed, confident travel-photography pose, naturally leaning or resting one hand near the motorcycle while looking slightly away from the camera.
+Keep the same overall environment and composition as the reference: a smooth dark mountain road with white edge markings, metal roadside guardrails, dense green tea plantations/vegetation, layered misty mountains and tall trees in the background. Include a distinctive tree near the roadside similar to the reference composition.
+The sky should have a dramatic warm pink-orange sunset, with soft clouds and atmospheric haze over the mountains. Create beautiful natural depth between the foreground road, motorcycle, subject, vegetation, and distant hills.
+Photography style: ultra-photorealistic travel photography, cinematic natural lighting, realistic skin texture, realistic fabric and leather texture, subtle atmospheric haze, natural shadows, soft sunset highlights, detailed motorcycle, realistic perspective, DSLR photography, 35mm lens, shallow-to-moderate depth of field, high dynamic range, premium editorial travel photograph.
+Important: Keep my identity unchanged. Do not alter my facial features. Keep the motorcycle realistic and proportionally correct. No extra people, no text, no logos added artificially, no distorted hands, no distorted motorcycle parts, no cartoon/AI appearance.
+Composition: vertical portrait photograph, full-body subject and full motorcycle visible, road and mountain scenery clearly visible, subject naturally integrated into the environment, cinematic balanced framing, highly realistic.`
+    },
+    {
         id: "bw-editorial-portrait",
         title: "B&W High-Contrast Editorial",
         category: "Fashion Portrait",
