@@ -1,6 +1,13 @@
 // PROPERLY NAMED IMAGE PROMPT DATA
 const images = [
     {
+        id: "candlelit-tropical-portrait",
+        title: "Candlelit Tropical Portrait",
+        category: "Cinematic",
+        image: "images/image-13.webp",
+        prompt: `Use my reference image to preserve my exact face, identity, and natural features. Create an ultra-realistic candid portrait of a person sitting comfortably at an elegant outdoor tropical restaurant at night, surrounded by lush large green banana leaves and dense foliage. Warm ambient candlelight, dark moody background, wooden dining table and woven chairs, an octagonal wall mirror in the background reflecting greenery. Relaxed natural pose, looking directly at the camera, realistic skin texture, authentic photography, subtle warm lighting, shallow depth of field, premium lifestyle aesthetic, smartphone-camera realism, vertical 4:5 composition. Keep the outfit gender-neutral and stylish, with natural fit and no exaggerated body features. Do not change the person's identity or facial structure.`
+    },
+    {
         id: "royal-enfield-sunset-tour",
         title: "Royal Enfield Mountain Sunset",
         category: "Cinematic",
