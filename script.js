@@ -1,6 +1,13 @@
 // PROPERLY NAMED IMAGE PROMPT DATA
 const images = [
     {
+  id: "elevator-line-art-selfie",
+  title: "Elevator Line-Art Selfie",
+  category: "Cinematic",
+  image: "images/image-14.webp",
+  prompt: `Use my uploaded photo as the exact face and identity reference. Create a photorealistic aesthetic elevator mirror selfie of me, preserving my facial features, hairstyle, skin tone, body proportions and natural appearance. I’m standing casually inside a modern elevator, taking a mirror selfie with a Samsung Galaxy S24. Beside me, add a beautiful girl drawn entirely as a simple white hand-drawn line-art sketch, standing naturally next to me with headphones and a small shoulder bag. The girl should look like a clean white neon/marker outline naturally integrated into the real elevator scene. Outfit: oversized dark charcoal graphic-free T-shirt, relaxed-fit black trousers, clean white sneakers, minimal silver accessories. Moody warm elevator lighting, realistic reflections, subtle shadows, slightly muted cinematic colors, soft grain, candid Instagram aesthetic, natural proportions, highly realistic photography. Keep the girl as white line art only. No text, no writing, no logos, no extra people.`
+},
+    {
         id: "candlelit-tropical-portrait",
         title: "Candlelit Tropical Portrait",
         category: "Cinematic",
