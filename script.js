@@ -1,6 +1,13 @@
 // PROPERLY NAMED IMAGE PROMPT DATA
 const images = [
     {
+        id: "pixelated-minecraft-twin",
+        title: "Minecraft Pixel Twin",
+        category: "Surreal 3D",
+        image: "images/image-15.webp",
+        prompt: `> Create a medium-sized cute pixelated 3D/Minecraft-style version of the person standing beside the original, about 80% of the original person's height, matching the exact outfit, pose, hairstyle, and accessories. Keep the background, lighting, camera angle, and composition unchanged. Unisex, realistic detailed pixel-art style.`
+    },
+    {
   id: "elevator-line-art-selfie",
   title: "Elevator Line-Art Selfie",
   category: "Cinematic",
