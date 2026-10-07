@@ -185,7 +185,6 @@ const toast = document.getElementById("toast");
 // CAROUSEL GLOBAL STATE
 let currentCarouselImages = [];
 let currentCarouselIndex = 0;
-
 let activeCategory = "All";
 
 function createCategories() {
@@ -276,56 +275,68 @@ function openImage(id) {
     }
 }
 
-// UPDATE CAROUSEL IMAGE & INDICATOR
+// UPDATE CAROUSEL IMAGE & COUNTER DISPLAY
 function updateCarouselDisplay() {
     const modalImage = document.getElementById("modalImage");
-    const indicator = document.getElementById("slideIndicator");
-    const prevBtn = document.getElementById("prevBtn");
-    const nextBtn = document.getElementById("nextBtn");
+    
+    // Target counter indicator inside modal
+    let indicator = document.querySelector(".carousel-indicator") || document.querySelector(".image-count") || document.getElementById("slideIndicator");
+    let prevBtn = document.querySelector(".prev-btn") || document.getElementById("prevBtn");
+    let nextBtn = document.querySelector(".next-btn") || document.getElementById("nextBtn");
 
     modalImage.src = currentCarouselImages[currentCarouselIndex];
 
     if (indicator) {
-        indicator.textContent = `${currentCarouselIndex + 1} / ${currentCarouselImages.length}`;
+        indicator.textContent = `${currentCarouselIndex + 1}/${currentCarouselImages.length}`;
+        indicator.style.display = currentCarouselImages.length > 1 ? "block" : "none";
     }
 
-    // Hide navigation controls if there's only 1 image
-    if (currentCarouselImages.length <= 1) {
-        if (prevBtn) prevBtn.style.display = "none";
-        if (nextBtn) nextBtn.style.display = "none";
-        if (indicator) indicator.style.display = "none";
-    } else {
-        if (prevBtn) prevBtn.style.display = "flex";
-        if (nextBtn) nextBtn.style.display = "flex";
-        if (indicator) indicator.style.display = "block";
+    if (prevBtn) prevBtn.style.display = currentCarouselImages.length > 1 ? "flex" : "none";
+    if (nextBtn) nextBtn.style.display = currentCarouselImages.length > 1 ? "flex" : "none";
+}
+
+// ATTACH BUTTON EVENT LISTENERS FOR SLIDE NAVIGATION
+document.addEventListener("DOMContentLoaded", () => {
+    bindCarouselButtons();
+});
+
+function bindCarouselButtons() {
+    const prevBtn = document.querySelector(".prev-btn") || document.getElementById("prevBtn");
+    const nextBtn = document.querySelector(".next-btn") || document.getElementById("nextBtn");
+
+    if (prevBtn) {
+        prevBtn.onclick = (e) => {
+            e.stopPropagation();
+            if (currentCarouselImages.length <= 1) return;
+            currentCarouselIndex = (currentCarouselIndex - 1 + currentCarouselImages.length) % currentCarouselImages.length;
+            updateCarouselDisplay();
+        };
+    }
+
+    if (nextBtn) {
+        nextBtn.onclick = (e) => {
+            e.stopPropagation();
+            if (currentCarouselImages.length <= 1) return;
+            currentCarouselIndex = (currentCarouselIndex + 1) % currentCarouselImages.length;
+            updateCarouselDisplay();
+        };
     }
 }
 
-// CAROUSEL NAVIGATION BUTTON CONTROLS
-const prevBtn = document.getElementById("prevBtn");
-const nextBtn = document.getElementById("nextBtn");
-
-if (prevBtn) {
-    prevBtn.onclick = (e) => {
-        e.stopPropagation();
-        currentCarouselIndex = (currentCarouselIndex - 1 + currentCarouselImages.length) % currentCarouselImages.length;
-        updateCarouselDisplay();
-    };
-}
-
-if (nextBtn) {
-    nextBtn.onclick = (e) => {
-        e.stopPropagation();
-        currentCarouselIndex = (currentCarouselIndex + 1) % currentCarouselImages.length;
-        updateCarouselDisplay();
-    };
-}
+// ALSO BIND IMMEDIATELY IN CASE SCRIPT IS INJECTED AFTER DOM LOAD
+bindCarouselButtons();
 
 // KEYBOARD ARROW NAVIGATION
 document.addEventListener("keydown", e => {
     if (!modal.classList.contains("show")) return;
-    if (e.key === "ArrowLeft" && prevBtn) prevBtn.click();
-    if (e.key === "ArrowRight" && nextBtn) nextBtn.click();
+    if (e.key === "ArrowLeft") {
+        const prevBtn = document.querySelector(".prev-btn") || document.getElementById("prevBtn");
+        if (prevBtn) prevBtn.click();
+    }
+    if (e.key === "ArrowRight") {
+        const nextBtn = document.querySelector(".next-btn") || document.getElementById("nextBtn");
+        if (nextBtn) nextBtn.click();
+    }
     if (e.key === "Escape") modal.classList.remove("show");
 });
 
