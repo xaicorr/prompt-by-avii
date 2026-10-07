@@ -12,7 +12,7 @@ Use my uploaded photo as the exact face/identity reference. Create a photorealis
 Use my uploaded photo as the exact face/identity reference. Create a photorealistic black-and-white full-body fashion portrait, wearing a distressed denim jacket, dark ripped loose-fit jeans and black sunglasses. One hand near the face, confident pose, dramatic lighting, high contrast, cinematic grain, dark background with large flowing motion-blur streaks.
 
 3. Side View
-Use my uploaded photo as the exact face/identity reference. Create a photorealistic black-and-white side-profile fashion portrait, wearing a distressed denim jacket, dark ripped loose-fit jeans and black sunglasses. Dramatic side lighting, deep shadows, high contrast, cinematic film grain, dark background with flowing horizontal motion-blur streaks.`
+Use my uploaded photo as the exact face/identity reference. Create a photorealistic black-and-white side-profile fashion portrait, wearing a distressed denim jacket, dark ripped loose-fit jeans and black sunglasses. Dramatic side lighting, deep shadows, high contrast, cinematic grain, dark background with flowing horizontal motion-blur streaks.`
     },
     {
         id: "pixelated-minecraft-twin",
@@ -187,6 +187,10 @@ let currentCarouselImages = [];
 let currentCarouselIndex = 0;
 let activeCategory = "All";
 
+// TOUCH SWIPE TRACKING
+let touchStartX = 0;
+let touchEndX = 0;
+
 function createCategories() {
     const categories = ["All", ...new Set(images.map(item => item.category))];
     categoriesContainer.innerHTML = "";
@@ -275,68 +279,107 @@ function openImage(id) {
     }
 }
 
-// UPDATE CAROUSEL IMAGE & COUNTER DISPLAY
+// UPDATE CAROUSEL IMAGE & DOT INDICATORS
 function updateCarouselDisplay() {
     const modalImage = document.getElementById("modalImage");
-    
-    // Target counter indicator inside modal
-    let indicator = document.querySelector(".carousel-indicator") || document.querySelector(".image-count") || document.getElementById("slideIndicator");
-    let prevBtn = document.querySelector(".prev-btn") || document.getElementById("prevBtn");
-    let nextBtn = document.querySelector(".next-btn") || document.getElementById("nextBtn");
+    const dotsContainer = document.getElementById("dotsContainer");
+    const prevBtn = document.querySelector(".prev-btn") || document.getElementById("prevBtn");
+    const nextBtn = document.querySelector(".next-btn") || document.getElementById("nextBtn");
 
     modalImage.src = currentCarouselImages[currentCarouselIndex];
 
-    if (indicator) {
-        indicator.textContent = `${currentCarouselIndex + 1}/${currentCarouselImages.length}`;
-        indicator.style.display = currentCarouselImages.length > 1 ? "block" : "none";
+    // Build dot indicators dynamically
+    if (dotsContainer) {
+        dotsContainer.innerHTML = "";
+        if (currentCarouselImages.length > 1) {
+            dotsContainer.style.display = "flex";
+            currentCarouselImages.forEach((_, idx) => {
+                const dot = document.createElement("span");
+                dot.className = "carousel-dot" + (idx === currentCarouselIndex ? " active" : "");
+                dot.onclick = (e) => {
+                    e.stopPropagation();
+                    currentCarouselIndex = idx;
+                    updateCarouselDisplay();
+                };
+                dotsContainer.appendChild(dot);
+            });
+        } else {
+            dotsContainer.style.display = "none";
+        }
     }
 
     if (prevBtn) prevBtn.style.display = currentCarouselImages.length > 1 ? "flex" : "none";
     if (nextBtn) nextBtn.style.display = currentCarouselImages.length > 1 ? "flex" : "none";
 }
 
-// ATTACH BUTTON EVENT LISTENERS FOR SLIDE NAVIGATION
+// NEXT / PREVIOUS NAVIGATION LOGIC
+function nextSlide() {
+    if (currentCarouselImages.length <= 1) return;
+    currentCarouselIndex = (currentCarouselIndex + 1) % currentCarouselImages.length;
+    updateCarouselDisplay();
+}
+
+function prevSlide() {
+    if (currentCarouselImages.length <= 1) return;
+    currentCarouselIndex = (currentCarouselIndex - 1 + currentCarouselImages.length) % currentCarouselImages.length;
+    updateCarouselDisplay();
+}
+
+// BIND BUTTONS & MOBILE TOUCH SWIPE EVENTS
 document.addEventListener("DOMContentLoaded", () => {
-    bindCarouselButtons();
+    bindCarouselEvents();
 });
 
-function bindCarouselButtons() {
+function bindCarouselEvents() {
     const prevBtn = document.querySelector(".prev-btn") || document.getElementById("prevBtn");
     const nextBtn = document.querySelector(".next-btn") || document.getElementById("nextBtn");
+    const modalImage = document.getElementById("modalImage");
 
     if (prevBtn) {
         prevBtn.onclick = (e) => {
             e.stopPropagation();
-            if (currentCarouselImages.length <= 1) return;
-            currentCarouselIndex = (currentCarouselIndex - 1 + currentCarouselImages.length) % currentCarouselImages.length;
-            updateCarouselDisplay();
+            prevSlide();
         };
     }
 
     if (nextBtn) {
         nextBtn.onclick = (e) => {
             e.stopPropagation();
-            if (currentCarouselImages.length <= 1) return;
-            currentCarouselIndex = (currentCarouselIndex + 1) % currentCarouselImages.length;
-            updateCarouselDisplay();
+            nextSlide();
         };
+    }
+
+    // Touch events for mobile swiping on the image
+    if (modalImage) {
+        modalImage.addEventListener("touchstart", e => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        modalImage.addEventListener("touchend", e => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }, { passive: true });
     }
 }
 
-// ALSO BIND IMMEDIATELY IN CASE SCRIPT IS INJECTED AFTER DOM LOAD
-bindCarouselButtons();
+function handleSwipe() {
+    const threshold = 40; // Minimum drag distance to register as a swipe
+    if (touchEndX < touchStartX - threshold) {
+        nextSlide(); // Swiped left -> next image
+    }
+    if (touchEndX > touchStartX + threshold) {
+        prevSlide(); // Swiped right -> previous image
+    }
+}
+
+// BIND IMMEDIATELY IN CASE SCRIPT RUNS AFTER DOM LOAD
+bindCarouselEvents();
 
 // KEYBOARD ARROW NAVIGATION
 document.addEventListener("keydown", e => {
     if (!modal.classList.contains("show")) return;
-    if (e.key === "ArrowLeft") {
-        const prevBtn = document.querySelector(".prev-btn") || document.getElementById("prevBtn");
-        if (prevBtn) prevBtn.click();
-    }
-    if (e.key === "ArrowRight") {
-        const nextBtn = document.querySelector(".next-btn") || document.getElementById("nextBtn");
-        if (nextBtn) nextBtn.click();
-    }
+    if (e.key === "ArrowLeft") prevSlide();
+    if (e.key === "ArrowRight") nextSlide();
     if (e.key === "Escape") modal.classList.remove("show");
 });
 
