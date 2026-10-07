@@ -182,6 +182,10 @@ const noResults = document.getElementById("noResults");
 const modal = document.getElementById("modal");
 const toast = document.getElementById("toast");
 
+// CAROUSEL GLOBAL STATE
+let currentCarouselImages = [];
+let currentCarouselIndex = 0;
+
 let activeCategory = "All";
 
 function createCategories() {
@@ -223,7 +227,6 @@ function displayImages() {
     filtered.forEach(item => {
         const card = document.createElement("article");
         card.className = "card";
-        // If image is an array, display the first thumbnail on the card grid
         const cardImage = Array.isArray(item.image) ? item.image[0] : item.image;
 
         card.innerHTML = `
@@ -256,14 +259,15 @@ function copyPrompt(id) {
     }
 }
 
+// OPEN MODAL & INITIALIZE CAROUSEL
 function openImage(id) {
     const item = images.find(img => img.id === id);
     if (item) {
-        const modalImage = document.getElementById("modalImage");
-        // If single image string, convert to array for unified handling
-        const imageList = Array.isArray(item.image) ? item.image : [item.image];
+        currentCarouselImages = Array.isArray(item.image) ? item.image : [item.image];
+        currentCarouselIndex = 0;
         
-        modalImage.src = imageList[0];
+        updateCarouselDisplay();
+
         document.getElementById("modalTitle").textContent = item.title;
         document.getElementById("modalCategory").textContent = item.category;
         document.getElementById("modalPrompt").textContent = item.prompt;
@@ -272,9 +276,61 @@ function openImage(id) {
     }
 }
 
+// UPDATE CAROUSEL IMAGE & INDICATOR
+function updateCarouselDisplay() {
+    const modalImage = document.getElementById("modalImage");
+    const indicator = document.getElementById("slideIndicator");
+    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn = document.getElementById("nextBtn");
+
+    modalImage.src = currentCarouselImages[currentCarouselIndex];
+
+    if (indicator) {
+        indicator.textContent = `${currentCarouselIndex + 1} / ${currentCarouselImages.length}`;
+    }
+
+    // Hide navigation controls if there's only 1 image
+    if (currentCarouselImages.length <= 1) {
+        if (prevBtn) prevBtn.style.display = "none";
+        if (nextBtn) nextBtn.style.display = "none";
+        if (indicator) indicator.style.display = "none";
+    } else {
+        if (prevBtn) prevBtn.style.display = "flex";
+        if (nextBtn) nextBtn.style.display = "flex";
+        if (indicator) indicator.style.display = "block";
+    }
+}
+
+// CAROUSEL NAVIGATION BUTTON CONTROLS
+const prevBtn = document.getElementById("prevBtn");
+const nextBtn = document.getElementById("nextBtn");
+
+if (prevBtn) {
+    prevBtn.onclick = (e) => {
+        e.stopPropagation();
+        currentCarouselIndex = (currentCarouselIndex - 1 + currentCarouselImages.length) % currentCarouselImages.length;
+        updateCarouselDisplay();
+    };
+}
+
+if (nextBtn) {
+    nextBtn.onclick = (e) => {
+        e.stopPropagation();
+        currentCarouselIndex = (currentCarouselIndex + 1) % currentCarouselImages.length;
+        updateCarouselDisplay();
+    };
+}
+
+// KEYBOARD ARROW NAVIGATION
+document.addEventListener("keydown", e => {
+    if (!modal.classList.contains("show")) return;
+    if (e.key === "ArrowLeft" && prevBtn) prevBtn.click();
+    if (e.key === "ArrowRight" && nextBtn) nextBtn.click();
+    if (e.key === "Escape") modal.classList.remove("show");
+});
+
 document.getElementById("closeModal").onclick = () => modal.classList.remove("show");
 modal.addEventListener("click", e => { if (e.target === modal) modal.classList.remove("show"); });
-document.addEventListener("keydown", e => { if (e.key === "Escape") modal.classList.remove("show"); });
 
 document.getElementById("modalCopy").onclick = () => {
     const id = modal.dataset.currentId;
