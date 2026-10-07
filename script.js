@@ -1,6 +1,20 @@
 // PROPERLY NAMED IMAGE PROMPT DATA
 const images = [
     {
+        id: "bw-denim-motion-series",
+        title: "B&W Denim Motion Series",
+        category: "Fashion Portrait",
+        image: ["images/image-16a.webp", "images/image-16b.webp", "images/image-16c.webp"],
+        prompt: `1. Close-Up
+Use my uploaded photo as the exact face/identity reference. Create a photorealistic black-and-white close-up portrait, wearing black sunglasses and a rugged denim jacket. Dramatic side lighting, deep shadows, high contrast, cinematic film grain, dark background with strong flowing motion-blur streaks.
+
+2. Full-Body 
+Use my uploaded photo as the exact face/identity reference. Create a photorealistic black-and-white full-body fashion portrait, wearing a distressed denim jacket, dark ripped loose-fit jeans and black sunglasses. One hand near the face, confident pose, dramatic lighting, high contrast, cinematic grain, dark background with large flowing motion-blur streaks.
+
+3. Side View
+Use my uploaded photo as the exact face/identity reference. Create a photorealistic black-and-white side-profile fashion portrait, wearing a distressed denim jacket, dark ripped loose-fit jeans and black sunglasses. Dramatic side lighting, deep shadows, high contrast, cinematic film grain, dark background with flowing horizontal motion-blur streaks.`
+    },
+    {
         id: "pixelated-minecraft-twin",
         title: "Minecraft Pixel Twin",
         category: "Surreal 3D",
@@ -8,12 +22,12 @@ const images = [
         prompt: `> Create a medium-sized cute pixelated 3D/Minecraft-style version of the person standing beside the original, about 80% of the original person's height, matching the exact outfit, pose, hairstyle, and accessories. Keep the background, lighting, camera angle, and composition unchanged. Unisex, realistic detailed pixel-art style.`
     },
     {
-  id: "elevator-line-art-selfie",
-  title: "Elevator Line-Art Selfie",
-  category: "Cinematic",
-  image: "images/image-14.webp",
-  prompt: `Use my uploaded photo as the exact face and identity reference. Create a photorealistic aesthetic elevator mirror selfie of me, preserving my facial features, hairstyle, skin tone, body proportions and natural appearance. I’m standing casually inside a modern elevator, taking a mirror selfie with a Samsung Galaxy S24. Beside me, add a beautiful girl drawn entirely as a simple white hand-drawn line-art sketch, standing naturally next to me with headphones and a small shoulder bag. The girl should look like a clean white neon/marker outline naturally integrated into the real elevator scene. Outfit: oversized dark charcoal graphic-free T-shirt, relaxed-fit black trousers, clean white sneakers, minimal silver accessories. Moody warm elevator lighting, realistic reflections, subtle shadows, slightly muted cinematic colors, soft grain, candid Instagram aesthetic, natural proportions, highly realistic photography. Keep the girl as white line art only. No text, no writing, no logos, no extra people.`
-},
+        id: "elevator-line-art-selfie",
+        title: "Elevator Line-Art Selfie",
+        category: "Cinematic",
+        image: "images/image-14.webp",
+        prompt: `Use my uploaded photo as the exact face and identity reference. Create a photorealistic aesthetic elevator mirror selfie of me, preserving my facial features, hairstyle, skin tone, body proportions and natural appearance. I’m standing casually inside a modern elevator, taking a mirror selfie with a Samsung Galaxy S24. Beside me, add a beautiful girl drawn entirely as a simple white hand-drawn line-art sketch, standing naturally next to me with headphones and a small shoulder bag. The girl should look like a clean white neon/marker outline naturally integrated into the real elevator scene. Outfit: oversized dark charcoal graphic-free T-shirt, relaxed-fit black trousers, clean white sneakers, minimal silver accessories. Moody warm elevator lighting, realistic reflections, subtle shadows, slightly muted cinematic colors, soft grain, candid Instagram aesthetic, natural proportions, highly realistic photography. Keep the girl as white line art only. No text, no writing, no logos, no extra people.`
+    },
     {
         id: "candlelit-tropical-portrait",
         title: "Candlelit Tropical Portrait",
@@ -209,9 +223,12 @@ function displayImages() {
     filtered.forEach(item => {
         const card = document.createElement("article");
         card.className = "card";
+        // If image is an array, display the first thumbnail on the card grid
+        const cardImage = Array.isArray(item.image) ? item.image[0] : item.image;
+
         card.innerHTML = `
             <div class="image-container">
-                <img src="${item.image}" alt="${item.title}" loading="lazy" decoding="async">
+                <img src="${cardImage}" alt="${item.title}" loading="lazy" decoding="async">
             </div>
             <div class="card-info">
                 <div>
@@ -242,7 +259,11 @@ function copyPrompt(id) {
 function openImage(id) {
     const item = images.find(img => img.id === id);
     if (item) {
-        document.getElementById("modalImage").src = item.image;
+        const modalImage = document.getElementById("modalImage");
+        // If single image string, convert to array for unified handling
+        const imageList = Array.isArray(item.image) ? item.image : [item.image];
+        
+        modalImage.src = imageList[0];
         document.getElementById("modalTitle").textContent = item.title;
         document.getElementById("modalCategory").textContent = item.category;
         document.getElementById("modalPrompt").textContent = item.prompt;
