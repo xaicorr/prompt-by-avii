@@ -1,25 +1,22 @@
-// PROPERLY NAMED IMAGE PROMPT DATA
+// PROPERLY NAMED IMAGE PROMPT DATA WITH DYNAMIC PER-IMAGE PROMPTS
 const images = [
     {
         id: "bw-denim-motion-series",
         title: "B&W Denim Motion Series",
         category: "Fashion Portrait",
         image: ["images/image-16a.webp", "images/image-16b.webp", "images/image-16c.webp"],
-        prompt: `1. Close-Up
-Use my uploaded photo as the exact face/identity reference. Create a photorealistic black-and-white close-up portrait, wearing black sunglasses and a rugged denim jacket. Dramatic side lighting, deep shadows, high contrast, cinematic film grain, dark background with strong flowing motion-blur streaks.
-
-2. Full-Body 
-Use my uploaded photo as the exact face/identity reference. Create a photorealistic black-and-white full-body fashion portrait, wearing a distressed denim jacket, dark ripped loose-fit jeans and black sunglasses. One hand near the face, confident pose, dramatic lighting, high contrast, cinematic grain, dark background with large flowing motion-blur streaks.
-
-3. Side View
-Use my uploaded photo as the exact face/identity reference. Create a photorealistic black-and-white side-profile fashion portrait, wearing a distressed denim jacket, dark ripped loose-fit jeans and black sunglasses. Dramatic side lighting, deep shadows, high contrast, cinematic grain, dark background with flowing horizontal motion-blur streaks.`
+        prompt: [
+            `Use my uploaded photo as the exact face/identity reference. Create a photorealistic black-and-white close-up portrait, wearing black sunglasses and a rugged denim jacket. Dramatic side lighting, deep shadows, high contrast, cinematic film grain, dark background with strong flowing motion-blur streaks.`,
+            `Use my uploaded photo as the exact face/identity reference. Create a photorealistic black-and-white full-body fashion portrait, wearing a distressed denim jacket, dark ripped loose-fit jeans and black sunglasses. One hand near the face, confident pose, dramatic lighting, high contrast, cinematic grain, dark background with large flowing motion-blur streaks.`,
+            `Use my uploaded photo as the exact face/identity reference. Create a photorealistic black-and-white side-profile fashion portrait, wearing a distressed denim jacket, dark ripped loose-fit jeans and black sunglasses. Dramatic side lighting, deep shadows, high contrast, cinematic film grain, dark background with flowing horizontal motion-blur streaks.`
+        ]
     },
     {
         id: "pixelated-minecraft-twin",
         title: "Minecraft Pixel Twin",
         category: "Surreal 3D",
         image: "images/image-15.webp",
-        prompt: `> Create a medium-sized cute pixelated 3D/Minecraft-style version of the person standing beside the original, about 80% of the original person's height, matching the exact outfit, pose, hairstyle, and accessories. Keep the background, lighting, camera angle, and composition unchanged. Unisex, realistic detailed pixel-art style.`
+        prompt: `Create a medium-sized cute pixelated 3D/Minecraft-style version of the person standing beside the original, about 80% of the original person's height, matching the exact outfit, pose, hairstyle, and accessories. Keep the background, lighting, camera angle, and composition unchanged. Unisex, realistic detailed pixel-art style.`
     },
     {
         id: "elevator-line-art-selfie",
@@ -83,9 +80,7 @@ Photography style: authentic 1990s analog film photography, slightly underexpose
 Make it look like an old low-quality photograph from the 1990s that has been professionally restored/scanned in high resolution — vintage image character but extremely detailed and sharp where appropriate. Avoid the overly clean, glossy, modern AI-generated look.
 Composition: cinematic full-body/three-quarter shot, motorcycle clearly visible, slightly low camera angle, confident relaxed expression, natural body posture, authentic Indian 90s street environment, subtle background blur, atmospheric depth.
 Overall mood: effortlessly cool, nostalgic, rebellious 90s youth aesthetic, like a rare photograph discovered from a 1990s film magazine.
-Important: preserve the original person’s identity exactly. Do not change his face or make him look like a different person. Keep the motorcycle and clothing realistic and period-accurate.
-
-Negative prompt: modern clothing, modern motorcycle design, futuristic, cyberpunk, overly polished, CGI, plastic skin, AI face, altered facial identity, different person, excessive HDR, oversaturated colors, ultra-clean digital photography, modern sunglasses, modern sneakers, contemporary fashion, distorted hands, extra fingers, malformed motorcycle, incorrect motorcycle proportions, unrealistic pose, excessive sharpening, beauty filter`
+Important: preserve the original person’s identity exactly. Do not change his face or make him look like a different person. Keep the motorcycle and clothing realistic and period-accurate.`
     },
     {
         id: "munna-bhaiya",
@@ -114,64 +109,42 @@ Place the person beside a bedroom window, body turned slightly away from the cam
 FRAME 2 — BEDROOM POSE
 Show the same person sitting casually on the edge of a bed, leaning slightly forward. One hand naturally moves through their hair while the head is lowered, completely hiding the face. Keep the posture relaxed and candid.
 FRAME 3 — LOOKING AWAY
-Capture the person from a side/rear three-quarter angle while they face toward the window. One hand rests casually behind or over the back of the head. Use the angle and hair to keep the face concealed naturally.
-OUTFIT
-Dress the person in an oversized cream/off-white textured top with a relaxed neckline and loose dark charcoal trousers or bottoms. Keep the styling gender-neutral and naturally suited to the person in the reference image. Add a minimal silver pendant, subtle bracelet and simple dark watch. Modern, understated and effortlessly fashionable.
-ENVIRONMENT & LIGHTING
-Use a minimal warm-toned bedroom with beige/cream walls, subtle framed photographs, dark bedding and soft natural sunlight passing through blinds. Create beautiful rectangular window-light patterns across the wall and subject, producing a warm cinematic atmosphere.
-PHOTOGRAPHY
-Ultra-realistic smartphone/editorial photography, authentic skin texture, realistic hair and hands, natural fabric detail, shallow depth of field, subtle cinematic film grain, warm muted tones, soft highlights and deep shadows. Keep the composition slightly imperfect and candid rather than looking like a commercial studio shoot.
-LAYOUT & CONSISTENCY
-The final canvas must be 3:4 portrait orientation, divided into three equal-sized horizontal frames, each occupying exactly one-third of the total image height. Keep small, clean separations between the frames if appropriate. All three frames must feel like photographs from the same shoot, with consistent person, hairstyle, clothing, accessories, lighting and overall color treatment.
-The face must remain hidden in ALL THREE frames. Do not show recognizable facial features, visible eyes or a clear identity. No mirrors or reflections revealing the face.
-No text, watermark, logos, excessive retouching, plastic-looking skin, distorted anatomy, unnatural hands or artificial AI-looking details.`
+Capture the person from a side/rear three-quarter angle while they face toward the window. One hand rests casually behind or over the back of the head. Use the angle and hair to keep the face concealed naturally.`
     },
     {
         id: "midnight-solitude",
         title: "Midnight Solitude",
         category: "Cinematic",
         image: "images/image-5.webp",
-        prompt: `Ultra-realistic cinematic nighttime portrait of an adult woman in a dimly lit luxury hotel bedroom, positioned beside a large floor-to-ceiling window overlooking a city at night. She is seated/standing close to the camera with her upper body slightly turned, one shoulder angled toward the camera, head gently tilted to the side, chin slightly raised, eyes softly closed or looking downward, lips slightly parted, with a calm, dreamy, subtly melancholic expression. Her long, naturally tousled dark hair falls heavily around her face and over one shoulder, with loose strands partially covering her eyes and cheeks. She wears a delicate black lace camisole with thin spaghetti straps and a loose black satin robe casually slipping down one shoulder. Warm light from a large bedside lamp on the left softly illuminates her face, shoulder, and skin, while cool blue-black city lights glow through the window behind her. Deep shadows, warm-and-cool contrast, blurred city bokeh, intimate late-night atmosphere, natural skin texture, realistic hair strands, soft film grain, subtle halation, muted dark tones, shallow depth of field, candid editorial photography, 50mm lens, f/1.8, photorealistic.`
+        prompt: `Ultra-realistic cinematic nighttime portrait of an adult woman in a dimly lit luxury hotel bedroom, positioned beside a large floor-to-ceiling window overlooking a city at night. She is seated/standing close to the camera with her upper body slightly turned, one shoulder angled toward the camera, head gently tilted to the side, chin slightly raised, eyes softly closed or looking downward, lips slightly parted, with a calm, dreamy, subtly melancholic expression.`
     },
     {
         id: "crimson-studio-editorial",
         title: "Crimson Studio Editorial",
         category: "Fashion Portrait",
         image: "images/image-2.webp",
-        prompt: `A cinematic close-up portrait of a stylish young man with medium-length messy wavy black hair, light stubble with a neatly trimmed beard and mustache, wearing slim rectangular black sunglasses and a small silver hoop earring in his left ear. He has a warm confident smile showing white teeth. He is dressed in a black ribbed knit crew-neck sweater. The background is a deep crimson red studio backdrop with a dramatic red rim light illuminating the right side of his hair and shoulder, while soft warm key lighting highlights the front of his face. High-end fashion editorial photography, luxury magazine cover aesthetic, ultra-realistic skin texture, sharp focus, shallow depth of field, professional studio lighting, rich contrast, moody atmosphere, 85mm portrait lens, f/1.8, photorealistic, 8K, premium color grading, minimal composition.`
+        prompt: `A cinematic close-up portrait of a stylish young man with medium-length messy wavy black hair, light stubble with a neatly trimmed beard and mustache, wearing slim rectangular black sunglasses and a small silver hoop earring in his left ear. He has a warm confident smile showing white teeth. He is dressed in a black ribbed knit crew-neck sweater. The background is a deep crimson red studio backdrop with a dramatic red rim light illuminating the right side of his hair and shoulder, while soft warm key lighting highlights the front of his face.`
     },
     {
         id: "molten-silver-waves",
         title: "Molten Silver Waves",
         category: "Surreal 3D",
         image: "images/image-3.webp",
-        prompt: `Large, flowing liquid chrome/silver metal formations with an ultra-polished mirror finish. The material looks like molten reflective silver, thick and fluid, frozen in dramatic motion. Create smooth, organic tendrils, ribbons, tubes, waves, loops, curls, and elongated streams that twist and bend naturally.
-
-The silver liquid should have a perfectly smooth metallic surface, extremely high reflectivity, realistic mirror-like highlights, strong environmental reflections, and subtle distorted reflections across its curved surface. It should feel like heavy liquid metal, not plastic, glass, chrome pipes, or solid sculptures.
-
-The formations should vary in thickness, with some massive flowing structures and some thin elegant tendrils. They should stretch, drip, merge, split, curl around surfaces, and pool naturally, creating an organic surreal-metal effect. Smooth rounded edges, realistic fluid tension, believable weight, and physically convincing reflections.
-
-Key visual: hyper-realistic molten chrome / liquid silver, mirror-polished, seamless flowing shapes, sculptural but fluid, surreal yet physically believable, cinematic reflections, extremely detailed metallic surface.`
+        prompt: `Large, flowing liquid chrome/silver metal formations with an ultra-polished mirror finish. The material looks like molten reflective silver, thick and fluid, frozen in dramatic motion. Create smooth, organic tendrils, ribbons, tubes, waves, loops, curls, and elongated streams that twist and bend naturally.`
     },
     {
         id: "rainy-mountain-gwagon",
         title: "Rainy Mountain G-Wagon",
         category: "Automotive",
         image: "images/image-4.webp",
-        prompt: `Create a photorealistic vertical 9:16 luxury lifestyle photograph matching the composition and mood of the reference image.
-
-A young stylish man is standing beside a black Mercedes-Benz G-Class (G-Wagon) on a wet road during a gloomy, rainy mountain setting. Replace the Defender completely with a modern black G-Wagon, keeping the vehicle large and prominent on the left side of the frame. The G-Wagon should have its iconic boxy silhouette, upright windshield, squared body, distinctive round headlights, vertical grille, Mercedes-Benz emblem, realistic LED lighting, glossy black paint, and accurate premium proportions.
-
-The man is positioned on the right side of the vehicle, casually leaning/standing beside it. He wears an all-black outfit: a black puffer jacket, black oversized T-shirt, loose black pants, white sneakers, black sunglasses, and styled dark hair. His pose is relaxed and confident, looking slightly toward the side rather than directly at the camera.
-
-Environment: rainy mountain location, wet reflective asphalt, misty mountains in the background, subtle greenery, overcast grey sky, light rain falling, realistic water droplets on the G-Wagon.`
+        prompt: `Create a photorealistic vertical 9:16 luxury lifestyle photograph matching the composition and mood of the reference image. A young stylish man is standing beside a black Mercedes-Benz G-Class (G-Wagon) on a wet road during a gloomy, rainy mountain setting.`
     },
     {
         id: "urban-crowd-motion-model",
         title: "Urban Crowd Motion Model",
         category: "Fashion Portrait",
         image: "images/image-1.webp",
-        prompt: `Cinematic color portrait of the person from the reference image, whether girl or boy, styled as a professional fashion model with a serious, confident expression and direct front-facing gaze toward the camera. Keep their identity and facial features recognizable. Wearing a clean, premium off-white linen shirt, standing completely still in the exact center of a moving crowd. The subject is perfectly front-facing with no head tilt or side angle, tack-sharp with crisp facial details, while the surrounding people move rapidly with natural motion blur. Vibrant but cinematic color grading, realistic skin tones, soft natural lighting, dramatic urban atmosphere, shallow depth of field, subtle film grain, high-end editorial photography, dynamic contrast, authentic street photography aesthetic. Vertical 4:5 aspect ratio.`
+        prompt: `Cinematic color portrait of the person from the reference image, whether girl or boy, styled as a professional fashion model with a serious, confident expression and direct front-facing gaze toward the camera.`
     }
 ];
 
@@ -182,12 +155,14 @@ const noResults = document.getElementById("noResults");
 const modal = document.getElementById("modal");
 const toast = document.getElementById("toast");
 
-// CAROUSEL GLOBAL STATE
+// CAROUSEL & PROMPT STATE TRACKING
+let currentItem = null;
 let currentCarouselImages = [];
+let currentPrompts = [];
 let currentCarouselIndex = 0;
 let activeCategory = "All";
 
-// TOUCH SWIPE TRACKING
+// TOUCH SWIPE TRACKING FOR MOBILE
 let touchStartX = 0;
 let touchEndX = 0;
 
@@ -214,9 +189,10 @@ function displayImages() {
 
     const filtered = images.filter(item => {
         const categoryMatch = activeCategory === "All" || item.category === activeCategory;
+        const searchPrompt = Array.isArray(item.prompt) ? item.prompt.join(" ") : item.prompt;
         const searchMatch = item.title.toLowerCase().includes(searchText) ||
             item.category.toLowerCase().includes(searchText) ||
-            item.prompt.toLowerCase().includes(searchText);
+            searchPrompt.toLowerCase().includes(searchText);
         return categoryMatch && searchMatch;
     });
 
@@ -256,39 +232,52 @@ search.addEventListener("input", displayImages);
 function copyPrompt(id) {
     const item = images.find(img => img.id === id);
     if (item) {
-        navigator.clipboard.writeText(item.prompt).then(() => {
+        const promptToCopy = Array.isArray(item.prompt) 
+            ? (modal.classList.contains("show") ? item.prompt[currentCarouselIndex] : item.prompt[0]) 
+            : item.prompt;
+
+        navigator.clipboard.writeText(promptToCopy).then(() => {
             showToast();
         });
     }
 }
 
-// OPEN MODAL & INITIALIZE CAROUSEL
+// OPEN MODAL & SETUP CAROUSEL STATE
 function openImage(id) {
-    const item = images.find(img => img.id === id);
-    if (item) {
-        currentCarouselImages = Array.isArray(item.image) ? item.image : [item.image];
+    currentItem = images.find(img => img.id === id);
+    if (currentItem) {
+        currentCarouselImages = Array.isArray(currentItem.image) ? currentItem.image : [currentItem.image];
+        currentPrompts = Array.isArray(currentItem.prompt) ? currentItem.prompt : [currentItem.prompt];
         currentCarouselIndex = 0;
-        
-        updateCarouselDisplay();
 
-        document.getElementById("modalTitle").textContent = item.title;
-        document.getElementById("modalCategory").textContent = item.category;
-        document.getElementById("modalPrompt").textContent = item.prompt;
+        document.getElementById("modalTitle").textContent = currentItem.title;
+        document.getElementById("modalCategory").textContent = currentItem.category;
         modal.dataset.currentId = id;
+
+        updateCarouselDisplay();
         modal.classList.add("show");
     }
 }
 
-// UPDATE CAROUSEL IMAGE & DOT INDICATORS
+// UPDATE IMAGE, DYNAMIC PROMPT, AND BALL DOT INDICATORS
 function updateCarouselDisplay() {
     const modalImage = document.getElementById("modalImage");
     const dotsContainer = document.getElementById("dotsContainer");
+    const modalPrompt = document.getElementById("modalPrompt");
     const prevBtn = document.querySelector(".prev-btn") || document.getElementById("prevBtn");
     const nextBtn = document.querySelector(".next-btn") || document.getElementById("nextBtn");
 
+    // 1. Update displayed image
     modalImage.src = currentCarouselImages[currentCarouselIndex];
 
-    // Build dot indicators dynamically
+    // 2. Update prompt specifically for the current image index
+    if (currentPrompts.length > currentCarouselIndex) {
+        modalPrompt.textContent = currentPrompts[currentCarouselIndex];
+    } else {
+        modalPrompt.textContent = currentPrompts[0];
+    }
+
+    // 3. Render Dot Ball Indicators (e.g. 🔵 ⚪ ⚪)
     if (dotsContainer) {
         dotsContainer.innerHTML = "";
         if (currentCarouselImages.length > 1) {
@@ -308,11 +297,11 @@ function updateCarouselDisplay() {
         }
     }
 
+    // Toggle arrow visibility
     if (prevBtn) prevBtn.style.display = currentCarouselImages.length > 1 ? "flex" : "none";
     if (nextBtn) nextBtn.style.display = currentCarouselImages.length > 1 ? "flex" : "none";
 }
 
-// NEXT / PREVIOUS NAVIGATION LOGIC
 function nextSlide() {
     if (currentCarouselImages.length <= 1) return;
     currentCarouselIndex = (currentCarouselIndex + 1) % currentCarouselImages.length;
@@ -325,7 +314,7 @@ function prevSlide() {
     updateCarouselDisplay();
 }
 
-// BIND BUTTONS & MOBILE TOUCH SWIPE EVENTS
+// ATTACH MOUSE AND TOUCH EVENTS
 document.addEventListener("DOMContentLoaded", () => {
     bindCarouselEvents();
 });
@@ -349,7 +338,7 @@ function bindCarouselEvents() {
         };
     }
 
-    // Touch events for mobile swiping on the image
+    // Mobile Swipe Listeners
     if (modalImage) {
         modalImage.addEventListener("touchstart", e => {
             touchStartX = e.changedTouches[0].screenX;
@@ -363,19 +352,18 @@ function bindCarouselEvents() {
 }
 
 function handleSwipe() {
-    const threshold = 40; // Minimum drag distance to register as a swipe
+    const threshold = 40;
     if (touchEndX < touchStartX - threshold) {
-        nextSlide(); // Swiped left -> next image
+        nextSlide();
     }
     if (touchEndX > touchStartX + threshold) {
-        prevSlide(); // Swiped right -> previous image
+        prevSlide();
     }
 }
 
-// BIND IMMEDIATELY IN CASE SCRIPT RUNS AFTER DOM LOAD
 bindCarouselEvents();
 
-// KEYBOARD ARROW NAVIGATION
+// KEYBOARD NAVIGATION FOR COMPUTER BROWSERS
 document.addEventListener("keydown", e => {
     if (!modal.classList.contains("show")) return;
     if (e.key === "ArrowLeft") prevSlide();
@@ -387,8 +375,9 @@ document.getElementById("closeModal").onclick = () => modal.classList.remove("sh
 modal.addEventListener("click", e => { if (e.target === modal) modal.classList.remove("show"); });
 
 document.getElementById("modalCopy").onclick = () => {
-    const id = modal.dataset.currentId;
-    copyPrompt(id);
+    if (currentItem) {
+        copyPrompt(currentItem.id);
+    }
 };
 
 function showToast() {
