@@ -271,10 +271,12 @@ header {
 .modal-image {
     background: #0b0712;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     position: relative;
     user-select: none;
+    padding: 10px 0;
 }
 
 .modal-image img {
@@ -320,16 +322,39 @@ header {
     right: 12px;
 }
 
-.slide-indicator {
+/* DYNAMIC BALL DOT INDICATORS */
+.dots-container {
     position: absolute;
     bottom: 12px;
-    background: rgba(11, 7, 18, 0.8);
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: rgba(11, 7, 18, 0.75);
     border: 1px solid #3b2063;
-    color: #c084fc;
-    font-size: 0.75rem;
-    font-weight: 700;
-    padding: 4px 12px;
-    border-radius: 12px;
+    padding: 6px 14px;
+    border-radius: 20px;
+    backdrop-filter: blur(4px);
+    z-index: 10;
+}
+
+.carousel-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #4c2d73;
+    cursor: pointer;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+                background-color 0.3s ease, 
+                box-shadow 0.3s ease;
+}
+
+.carousel-dot.active {
+    background-color: #a855f7;
+    transform: scale(1.4);
+    box-shadow: 0 0 10px rgba(168, 85, 247, 0.8);
 }
 
 .modal-info {
