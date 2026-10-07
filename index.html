@@ -3,45 +3,30 @@
 
 <head>
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Google Site Verification -->
-    <meta name="google-site-verification"
-          content="sVDuLPbcxA1M-3cNQox4L69QhkPWQv9P0rrzMVWVDdQ">
+    <meta name="google-site-verification" content="sVDuLPbcxA1M-3cNQox4L69QhkPWQv9P0rrzMVWVDdQ">
 
     <!-- SEO -->
     <title>Prompt By Avii | AI Image Prompt Library</title>
-
-    <meta name="description"
-          content="Prompt By Avii is an AI image prompt library featuring curated AI image prompts, creative ideas, and prompt engineering examples.">
-
+    <meta name="description" content="Prompt By Avii is an AI image prompt library featuring curated AI image prompts, creative ideas, and prompt engineering examples.">
     <meta name="robots" content="index, follow">
-
     <meta name="author" content="Avii">
 
-    <link rel="canonical"
-          href="https://xaicorr.github.io/prompt-by-avii/">
+    <link rel="canonical" href="https://xaicorr.github.io/prompt-by-avii/">
 
     <!-- Site Name -->
     <meta property="og:site_name" content="Prompt By Avii">
 
     <!-- Open Graph -->
-    <meta property="og:title"
-          content="Prompt By Avii | AI Image Prompt Library">
-
-    <meta property="og:description"
-          content="Explore curated AI image prompts and creative prompt engineering by Avii.">
-
-    <meta property="og:url"
-          content="https://xaicorr.github.io/prompt-by-avii/">
-
+    <meta property="og:title" content="Prompt By Avii | AI Image Prompt Library">
+    <meta property="og:description" content="Explore curated AI image prompts and creative prompt engineering by Avii.">
+    <meta property="og:url" content="https://xaicorr.github.io/prompt-by-avii/">
     <meta property="og:type" content="website">
 
     <!-- Favicon -->
-    <link rel="icon"
-          type="image/png"
-          href="images/fav.png">
+    <link rel="icon" type="image/png" href="images/fav.png">
 
     <!-- Google Site Name Structured Data -->
     <script type="application/ld+json">
@@ -82,11 +67,14 @@
     <main class="gallery" id="gallery"></main>
     <div class="no-results" id="noResults">No matching prompts found.</div>
 
-    <!-- POPUP MODAL -->
+    <!-- POPUP MODAL WITH CAROUSEL CONTROLS -->
     <div class="modal" id="modal">
         <div class="modal-box">
             <div class="modal-image">
+                <button class="carousel-btn prev-btn" id="prevSlide" aria-label="Previous image">&lt;</button>
                 <img id="modalImage" src="" alt="">
+                <button class="carousel-btn next-btn" id="nextSlide" aria-label="Next image">&gt;</button>
+                <div class="slide-indicator" id="slideIndicator">1 / 1</div>
             </div>
             <div class="modal-info">
                 <div>
@@ -103,7 +91,12 @@
     <!-- TOAST NOTIFICATION -->
     <div class="toast" id="toast">Prompt copied to clipboard!</div>
 
-   <script src="script.js"></script>
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; aviixai. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 
 </html>
