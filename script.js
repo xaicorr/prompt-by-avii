@@ -1,6 +1,53 @@
 // PROPERLY NAMED IMAGE PROMPT DATA WITH DYNAMIC PER-IMAGE PROMPTS
 const images = [
     {
+        id: "ar-music-experience",
+        title: "AR Music Experience",
+        category: "Cinematic",
+        image: "images/image-17.webp",
+        prompt: `Transform the uploaded person into a cinematic augmented-reality music experience while preserving the exact facial identity, hairstyle, facial structure, expression, body proportions, pose, clothing, camera angle, composition, and overall scene layout.
+
+FORMAT LOCK
+Preserve the original aspect ratio, framing, perspective, subject placement, camera distance, and composition. Keep the person as the central focus.
+
+IDENTITY LOCK
+Use the uploaded image as the only identity source. Preserve the exact facial structure, face shape, hairstyle, hair color, eyebrows, eyes, nose, lips, jawline, skin tone, age appearance, and recognizable identity traits.
+
+AR MUSIC SYSTEM
+Surround the subject with floating premium music-player interface cards inspired by modern streaming platforms. The cards orbit naturally around the subject at varying depths. Some cards appear in the foreground, partially overlapping the subject, while others float behind and beside the person.
+
+INTERFACE DESIGN
+Translucent frosted-glass panels, rounded corners, soft glowing edges, modern glassmorphism aesthetic, subtle reflections, premium UI design, clean typography, and luxury digital-product styling.
+
+SONG CARDS
+Create floating music-player cards featuring these songs and their respective artists:
+
+Blinding Lights — The Weeknd
+God's Plan — Drake
+Shape of You — Ed Sheeran
+As It Was — Harry Styles
+Levitating — Dua Lipa
+Bad Guy — Billie Eilish
+STAY — The Kid LAROI & Justin Bieber
+
+Include elegant album-art visuals, minimal playback controls, progress bars, waveform elements, and premium music-streaming interface styling. Ensure every song title and artist name is spelled correctly and displayed naturally within its respective card. Use realistic album artwork or tasteful visual representations that complement each song. Avoid unrelated text, random numbers, timestamps, unnecessary symbols, and duplicated song information.
+
+LIGHTING
+Natural, realistic lighting, soft ambient glow, subtle reflections, clean premium atmosphere, and balanced illumination. Maintain the original lighting conditions without introducing dramatic lighting effects.
+
+DEPTH & MOTION
+Strong depth of field, foreground cards slightly out of focus, background cards softly blurred, subtle floating motion, realistic AR-world depth, and natural spatial positioning. Maintain a balanced composition with clear visual separation between the person and the floating interfaces.
+
+STYLE
+Cinematic augmented reality, premium music visualization, luxury streaming-platform aesthetic, modern glassmorphism design, and Instagram-worthy creative portrait.
+
+OUTPUT STYLE
+Ultra-realistic AR portrait, floating music ecosystem, premium streaming-player interfaces, luxury social-media artwork, highly detailed textures, realistic reflections, professional visual quality, and ultra-detailed 8K appearance.
+
+NEGATIVE PROMPT
+Avoid cyberpunk lighting, dramatic shadows, excessive neon, anime style, cartoon rendering, distorted facial features, altered identity, changed hairstyle, modified clothing, incorrect body proportions, duplicated cards, cluttered composition, random text, meaningless numbers, timestamps, playback durations, unnecessary symbols, misspelled song titles, incorrect artist names, overlapping text, illegible typography, watermarks, unwanted logos, artificial skin, excessive glow, and unrealistic reflections. Do not crop, reposition, or alter the original subject. Keep all music cards visually coherent, readable, elegant, and naturally integrated into the scene.`
+    },
+    {
         id: "bw-denim-motion-series",
         title: "B&W Denim Motion Series",
         category: "Fashion Portrait",
