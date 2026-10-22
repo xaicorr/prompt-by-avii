@@ -204,7 +204,7 @@ const modal = document.getElementById("modal");
 const toast = document.getElementById("toast");
 
 // PAGINATION & CAROUSEL STATE TRACKING
-const ITEMS_PER_PAGE = 12;
+const ITEMS_PER_PAGE = 8; // CHANGED: Exactly 8 images per page
 let currentPage = 1;
 let currentItem = null;
 let currentCarouselImages = [];
@@ -255,7 +255,7 @@ function displayImages() {
 
     noResults.style.display = "none";
 
-    // PAGINATION LOGIC: Slice to display exactly 12 items for current page
+    // PAGINATION LOGIC: Slice to display exactly 8 items for current page
     const totalPages = Math.ceil(filtered.length / ITEMS_PER_PAGE);
     if (currentPage > totalPages) currentPage = 1;
 
