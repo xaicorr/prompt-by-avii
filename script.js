@@ -199,10 +199,13 @@ const gallery = document.getElementById("gallery");
 const categoriesContainer = document.getElementById("categories");
 const search = document.getElementById("search");
 const noResults = document.getElementById("noResults");
+const paginationContainer = document.getElementById("pagination");
 const modal = document.getElementById("modal");
 const toast = document.getElementById("toast");
 
-// CAROUSEL & PROMPT STATE TRACKING
+// PAGINATION & CAROUSEL STATE TRACKING
+const ITEMS_PER_PAGE = 12;
+let currentPage = 1;
 let currentItem = null;
 let currentCarouselImages = [];
 let currentPrompts = [];
@@ -222,6 +225,7 @@ function createCategories() {
         button.textContent = category;
         button.onclick = () => {
             activeCategory = category;
+            currentPage = 1; // Reset to Page 1 when changing categories
             document.querySelectorAll(".category-btn").forEach(btn => btn.classList.remove("active"));
             button.classList.add("active");
             displayImages();
@@ -245,12 +249,20 @@ function displayImages() {
 
     if (filtered.length === 0) {
         noResults.style.display = "block";
+        paginationContainer.innerHTML = "";
         return;
     }
 
     noResults.style.display = "none";
 
-    filtered.forEach(item => {
+    // PAGINATION LOGIC: Slice to display exactly 12 items for current page
+    const totalPages = Math.ceil(filtered.length / ITEMS_PER_PAGE);
+    if (currentPage > totalPages) currentPage = 1;
+
+    const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+    const paginatedItems = filtered.slice(startIndex, startIndex + ITEMS_PER_PAGE);
+
+    paginatedItems.forEach(item => {
         const card = document.createElement("article");
         card.className = "card";
         const cardImage = Array.isArray(item.image) ? item.image[0] : item.image;
@@ -272,9 +284,61 @@ function displayImages() {
         `;
         gallery.appendChild(card);
     });
+
+    renderPagination(totalPages);
 }
 
-search.addEventListener("input", displayImages);
+// RENDER PAGINATION BUTTONS
+function renderPagination(totalPages) {
+    paginationContainer.innerHTML = "";
+    if (totalPages <= 1) return;
+
+    // Previous Button
+    const prevBtn = document.createElement("button");
+    prevBtn.className = "page-btn";
+    prevBtn.textContent = "« Prev";
+    prevBtn.disabled = currentPage === 1;
+    prevBtn.onclick = () => {
+        if (currentPage > 1) {
+            currentPage--;
+            displayImages();
+            window.scrollTo({ top: gallery.offsetTop - 100, behavior: "smooth" });
+        }
+    };
+    paginationContainer.appendChild(prevBtn);
+
+    // Numbered Page Buttons
+    for (let i = 1; i <= totalPages; i++) {
+        const pageBtn = document.createElement("button");
+        pageBtn.className = "page-btn" + (i === currentPage ? " active" : "");
+        pageBtn.textContent = i;
+        pageBtn.onclick = () => {
+            currentPage = i;
+            displayImages();
+            window.scrollTo({ top: gallery.offsetTop - 100, behavior: "smooth" });
+        };
+        paginationContainer.appendChild(pageBtn);
+    }
+
+    // Next Button
+    const nextBtn = document.createElement("button");
+    nextBtn.className = "page-btn";
+    nextBtn.textContent = "Next »";
+    nextBtn.disabled = currentPage === totalPages;
+    nextBtn.onclick = () => {
+        if (currentPage < totalPages) {
+            currentPage++;
+            displayImages();
+            window.scrollTo({ top: gallery.offsetTop - 100, behavior: "smooth" });
+        }
+    };
+    paginationContainer.appendChild(nextBtn);
+}
+
+search.addEventListener("input", () => {
+    currentPage = 1; // Reset to Page 1 on search
+    displayImages();
+});
 
 function copyPrompt(id) {
     const item = images.find(img => img.id === id);
@@ -314,17 +378,14 @@ function updateCarouselDisplay() {
     const prevBtn = document.querySelector(".prev-btn") || document.getElementById("prevBtn");
     const nextBtn = document.querySelector(".next-btn") || document.getElementById("nextBtn");
 
-    // 1. Update displayed image
     modalImage.src = currentCarouselImages[currentCarouselIndex];
 
-    // 2. Update prompt specifically for the current image index
     if (currentPrompts.length > currentCarouselIndex) {
         modalPrompt.textContent = currentPrompts[currentCarouselIndex];
     } else {
         modalPrompt.textContent = currentPrompts[0];
     }
 
-    // 3. Render Dot Ball Indicators
     if (dotsContainer) {
         dotsContainer.innerHTML = "";
         if (currentCarouselImages.length > 1) {
@@ -344,7 +405,6 @@ function updateCarouselDisplay() {
         }
     }
 
-    // Toggle arrow visibility
     if (prevBtn) prevBtn.style.display = currentCarouselImages.length > 1 ? "flex" : "none";
     if (nextBtn) nextBtn.style.display = currentCarouselImages.length > 1 ? "flex" : "none";
 }
@@ -385,7 +445,6 @@ function bindCarouselEvents() {
         };
     }
 
-    // Mobile Swipe Listeners
     if (modalImage) {
         modalImage.addEventListener("touchstart", e => {
             touchStartX = e.changedTouches[0].screenX;
