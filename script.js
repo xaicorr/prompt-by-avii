@@ -324,7 +324,7 @@ function updateCarouselDisplay() {
         modalPrompt.textContent = currentPrompts[0];
     }
 
-    // 3. Render Dot Ball Indicators (e.g. 🔵 ⚪ ⚪)
+    // 3. Render Dot Ball Indicators
     if (dotsContainer) {
         dotsContainer.innerHTML = "";
         if (currentCarouselImages.length > 1) {
