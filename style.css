@@ -239,6 +239,205 @@ header {
     color: #a799be;
 }
 
+/* TUTORIAL & CONTENT HUB & FAQ & SOCIAL SECTIONS */
+.tutorial-section, .content-hub-section, .faq-section, .social-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 20px 20px;
+    text-align: center;
+}
+
+.tutorial-section h2, .content-hub-section h2, .faq-section h2 {
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    color: #f3e8ff;
+    margin-bottom: 10px;
+}
+
+.tutorial-section > div > p, .hub-intro {
+    color: #a799be;
+    margin-bottom: 40px;
+    font-size: 0.95rem;
+    max-width: 650px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+    text-align: left;
+}
+
+.step-card {
+    background: #140d21;
+    border: 1px solid #28183d;
+    border-radius: 16px;
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.step-card:hover {
+    transform: translateY(-4px);
+    border-color: #8b5cf6;
+}
+
+.step-number {
+    display: inline-block;
+    background: rgba(168, 85, 247, 0.15);
+    color: #c084fc;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 12px;
+    width: fit-content;
+    text-transform: uppercase;
+}
+
+.step-image-box {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #1d1230;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid #3b2063;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.step-image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.placeholder-box {
+    font-size: 1.8rem;
+    color: #a855f7;
+}
+
+.step-card h3 {
+    font-size: 1.1rem;
+    color: #f3e8ff;
+}
+
+.step-card p {
+    color: #a799be;
+    font-size: 0.85rem;
+    line-height: 1.5;
+}
+
+/* CONTENT HUB */
+.hub-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    text-align: left;
+    margin-top: 20px;
+}
+
+.hub-col {
+    background: #140d21;
+    border: 1px solid #28183d;
+    border-radius: 16px;
+    padding: 24px;
+    transition: border-color 0.2s ease;
+}
+
+.hub-col:hover {
+    border-color: #8b5cf6;
+}
+
+.hub-col h3 {
+    font-size: 1.15rem;
+    color: #f3e8ff;
+    margin-bottom: 12px;
+}
+
+.hub-col p {
+    color: #a799be;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+/* FAQ SECTION */
+.faq-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 20px;
+    text-align: left;
+    margin-top: 30px;
+}
+
+.faq-item {
+    background: #140d21;
+    border: 1px solid #28183d;
+    border-radius: 16px;
+    padding: 22px;
+    transition: border-color 0.2s ease;
+}
+
+.faq-item:hover {
+    border-color: #8b5cf6;
+}
+
+.faq-item h3 {
+    font-size: 1.05rem;
+    color: #f3e8ff;
+    margin-bottom: 8px;
+}
+
+.faq-item p {
+    color: #a799be;
+    font-size: 0.85rem;
+    line-height: 1.5;
+}
+
+/* SOCIAL SECTION */
+.social-box {
+    background: linear-gradient(135deg, #140d21, #1d1230);
+    border: 1px solid #3b2063;
+    border-radius: 20px;
+    padding: 40px 20px;
+    max-width: 700px;
+    margin: 0 auto;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.social-box h2 {
+    font-size: 1.6rem;
+    color: #f3e8ff;
+    margin-bottom: 10px;
+}
+
+.social-box p {
+    color: #a799be;
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+}
+
+.insta-btn {
+    display: inline-block;
+    background: linear-gradient(135deg, #a855f7, #ec4899);
+    color: #ffffff;
+    font-weight: 700;
+    padding: 12px 28px;
+    border-radius: 30px;
+    text-decoration: none;
+    box-shadow: 0 4px 15px rgba(168, 85, 247, 0.4);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.insta-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(168, 85, 247, 0.6);
+}
+
 /* MODAL POPUP */
 .modal {
     position: fixed;
