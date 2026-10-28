@@ -1,6 +1,13 @@
 // PROPERLY NAMED IMAGE PROMPT DATA WITH DYNAMIC PER-IMAGE PROMPTS
 const images = [
     {
+        id: "neon-eyes-side-profile",
+        title: "Neon Eyes Side Profile",
+        category: "Cinematic",
+        image: "images/image-18.webp",
+        prompt: "Create a photorealistic cinematic portrait using my uploaded reference image. Show me sitting on a simple chair, leaning backward with my head tilted upward, captured from a clear side-profile angle. Wear an all-black outfit. Behind me, display a giant close-up image of a girl's eyes, glowing inside a horizontal rectangular frame, exactly like the reference composition. Use intense purple and violet neon lighting, luminous frame edges, dramatic shadows, blue-purple rim lighting, and glossy floor reflections. Dark futuristic studio, full-body side view, ultra-realistic photography, vertical 9:16 composition. Preserve my exact facial identity and appearance."
+    },
+    {
         id: "ar-music-experience",
         title: "AR Music Experience",
         category: "Cinematic",
